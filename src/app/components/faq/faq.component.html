@@ -1,0 +1,11 @@
+<h2>FAQ</h2>
+<br>
+<div class="panel panel-primary" *ngFor="let item of lista" style="cursor:pointer;">
+  <div class="panel-heading">
+    <p routerLink="/faq/editar/{{item.rowKey}}">{{item.pergunta}}</p>
+    <span (click)="excluir(item)" style="float:right; margin-top:-25px; color:red;" class="glyphicon glyphicon-remove"></span>
+  </div>
+  <div class="panel-body">{{item.resposta}}</div>
+</div>
+
+<button routerLink="/faq/novo" type="button" class="btn btn-default">Novo faq</button>

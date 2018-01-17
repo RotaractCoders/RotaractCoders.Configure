@@ -1,0 +1,39 @@
+
+<form (ngSubmit)="incluir()" #heroForm="ngForm">
+  <div class="form-group">
+    <label>Nome:</label>
+    <input type="text" class="form-control" required [(ngModel)]="input.nome" name="nome" id="nome">
+  </div>
+  <div class="form-group">
+    <label>Realizador:</label>
+    <input type="text" class="form-control" required [(ngModel)]="input.realizador" name="realizador" id="realizador">
+  </div>
+  <div class="form-group">
+    <label>Descrição:</label>
+    <input type="text" class="form-control" [(ngModel)]="input.descricao" name="descricao" id="descricao">
+  </div>
+  <div class="form-group">
+    <label>Data evento:</label>
+    <input type="date" class="form-control" [(ngModel)]="input.data" name="data" id="data">
+  </div>
+  <div class="form-group">
+    <label>Horario:</label>
+    <input type="time" class="form-control" [(ngModel)]="input.hora" name="hora" id="hora">
+  </div>
+  <div class="form-group">
+    <label>Programa:</label>
+    <select class="form-control" [(ngModel)]="input.programa" name="programa" id="programa">
+      <option *ngFor="let item of programas" value="{{item}}">{{item}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Tipo evento:</label>
+    <select class="form-control" [(ngModel)]="input.tipoEvento" name="tipoEvento" id="tipoEvento">
+      <option *ngFor="let item of tiposEventos">{{item}}</option>
+    </select>
+  </div>
+  
+  <button type="submit" class="btn btn-primary" [disabled]="!heroForm.form.valid">Salvar</button>
+  <a routerLink="/agenda" class="btn btn-default">Voltar</a>
+</form>
+

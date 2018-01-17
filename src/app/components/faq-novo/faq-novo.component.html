@@ -1,0 +1,13 @@
+<form (ngSubmit)="salvar()" #heroForm="ngForm">
+  <div class="form-group">
+    <label>Pergunta:</label>
+    <textarea rows="2" class="form-control" required [(ngModel)]="input.pergunta" name="pergunta" id="pergunta"></textarea>
+  </div>
+  <div class="form-group">
+    <label>Resposta:</label>
+    <textarea rows="5" class="form-control" required [(ngModel)]="input.resposta" name="resposta" id="resposta"></textarea>
+  </div>
+  
+  <button type="submit" class="btn btn-primary" [disabled]="!heroForm.form.valid">Salvar</button>
+  <a routerLink="/faq" class="btn btn-default">Voltar</a>
+</form>

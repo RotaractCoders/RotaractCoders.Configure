@@ -2,13 +2,25 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>Descrição</th>
+      <th>Nome</th>
+      <th>Clube</th>
+      <th>Tipo</th>
+      <th>Programa</th>
+      <th>Data</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>item.descricao</td>
+    <tr *ngFor="let item of eventos" style="cursor:pointer;">
+      <td routerLink="/agenda/editar/{{item.rowKey}}">{{item.nome}}</td>
+      <td routerLink="/agenda/editar/{{item.rowKey}}">{{item.realizador}}</td>
+      <td routerLink="/agenda/editar/{{item.rowKey}}">{{item.tipoEvento}}</td>
+      <td routerLink="/agenda/editar/{{item.rowKey}}">{{item.programa}}</td>
+      <td routerLink="/agenda/editar/{{item.rowKey}}">{{item.dataEvento | date:'dd/MM/yyyy HH:mm'}}</td>
+      <td>  
+        <span class="glyphicon glyphicon-remove"  style="color:red" (click)="excluir(item)"></span>
+      </td>
     </tr>
   </tbody>
 </table>
-<button routerLink="/tipo-evento" type="button" class="btn btn-default">Gerenciar tipos de evento</button>
+<button routerLink="/agenda/novo" type="button" class="btn btn-default">Novo evento</button>

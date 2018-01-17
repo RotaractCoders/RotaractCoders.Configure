@@ -1,16 +1,12 @@
-import { Data } from "@angular/router/src/config";
-
-export class Incluir {
+export class EventoLista {
     rowKey: string;
     nome: string;
-    realizador: string;
     tipoEvento: string;
-    programa:string;
+    programa: string;
     descricao: string;
+    dataCriacao: Date;
     dataEvento: Date;
-
-    data:string;
-    hora:string;
+    dataAtualizacao: Date;
 
     constructor(values: Object = {}) {
         Object.assign(this, values);

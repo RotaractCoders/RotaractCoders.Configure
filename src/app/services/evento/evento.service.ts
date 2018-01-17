@@ -8,33 +8,25 @@ export class EventoService {
 
   constructor(private http: Http) { }
   
-    listar() {
-      return this.http.get('http://localhost:60342/api/Evento')
-        .map(res => res.json())
-        .catch(this.handleError);
-    }
+  listar() {
+    return this.http.get('http://localhost:60342/api/Evento')
+      .map(res => res.json());
+  }
 
-    buscar(id:number) {
-      return this.http.get('http://localhost:60342/api/Evento/' + id)
-        .map(res => res.json())
-        .catch(this.handleError);
-    }
-  
-    incluir(input: Incluir) {
-      return this.http.post('http://localhost:60342/api/Evento', input)
-        .map(res => res.json())
-        .catch(this.handleError);
-    }
+  buscar(id:string) {
+    return this.http.get('http://localhost:60342/api/Evento/' + id)
+      .map(res => res.json());
+  }
 
-    deletar(id: string) {
-      return this.http.delete('http://localhost:60342/api/Evento', { params: {id: id} })
-        .map(res => res.json())
-        .catch(this.handleError);
-    }
-  
-    private handleError(error: any) {
-      console.error(error);
-      return Promise.reject(error);
-    }
+  incluir(input: Incluir) {
+    return this.http.post('http://localhost:60342/api/Evento', input);
+  }
 
+  atualizar(input: Incluir) {
+    return this.http.put('http://localhost:60342/api/Evento', input);
+  }
+
+  deletar(id: string) {
+    return this.http.delete('http://localhost:60342/api/Evento?id=' + id);
+  }
 }

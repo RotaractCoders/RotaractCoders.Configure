@@ -1,26 +1,37 @@
 import { Component, OnInit } from '@angular/core';
-import { Lista } from '../../models/results/tipo-evento/lista';
-import { TipoEventoService } from '../../services/tipo-evento/tipo-evento.service'
+import { EventoLista } from '../../models/results/evento/evento-lista';
+import { EventoService } from '../../services/evento/evento.service'
+import { NovoEventoComponent } from '../novo-evento/novo-evento.component';
+import { Navigation } from 'selenium-webdriver';
 
 @Component({
   selector: 'app-agenda',
   templateUrl: './agenda.component.html',
   styleUrls: ['./agenda.component.css'],
   providers: [
-    TipoEventoService
+    EventoService
   ]
 })
 export class AgendaComponent implements OnInit {
 
-  tipoEventos: Lista[] = [];
+  eventos: EventoLista[] = [];
 
   constructor(
-    private tipoEventoService: TipoEventoService
+    private eventoService: EventoService
   ) { }
 
   ngOnInit() {
-    this.tipoEventoService.listar()
-      .subscribe(data => this.tipoEventos = data);
+    this.carregar();
   }
 
+  excluir(item: EventoLista) {
+    this.eventoService.deletar(item.rowKey).subscribe(() => {
+      this.carregar();
+    });
+  }
+
+  carregar() {
+    this.eventoService.listar()
+      .subscribe(data => this.eventos = data);
+  }
 }
