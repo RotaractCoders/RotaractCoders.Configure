@@ -1,3 +1,23 @@
-<p>
-  dados-estaticos works!
-</p>
+<form (ngSubmit)="salvar()" #heroForm="ngForm">
+  <div class="form-group">
+    <label>*Lema gestão 18 ~ 19:</label>
+    <textarea rows="5" class="form-control" required [(ngModel)]="lema.descricao" name="lema" id="lema"></textarea>
+  </div>
+  <div class="form-group">
+    <label>*O que é rotaract:</label>
+    <textarea rows="5" class="form-control" required [(ngModel)]="oqueerotaract.descricao" name="oqueerotaract" id="oqueerotaract"></textarea>
+  </div>
+  <div class="form-group">
+    <label>*História do distrito:</label>
+    <textarea rows="5" class="form-control" required [(ngModel)]="historiaDistrito.descricao" name="historiaDistrito" id="historiaDistrito"></textarea>
+  </div>
+  <div class="form-group">
+    <label>*Número sócios</label>
+    <input type="number" class="form-control" required [(ngModel)]="numeroSocios.descricao" name="numeroSocios" id="numeroSocios" />
+  </div>
+  <div class="form-group">
+    <label>*Número clubes</label>
+    <input type="number" class="form-control" required [(ngModel)]="numeroClubes.descricao" name="numeroClubes" id="numeroClubes" />
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="!heroForm.form.valid">Salvar</button>
+</form>

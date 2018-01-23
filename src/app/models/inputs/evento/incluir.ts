@@ -7,6 +7,9 @@ export class Incluir {
     tipoEvento: string;
     programa:string;
     descricao: string;
+    endereco: string;
+    latitude: number;
+    longitude: number;
     dataEvento: Date;
 
     data:string;

@@ -3,13 +3,16 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Incluir } from '../../models/inputs/evento/incluir';
 import { EventoLista } from '../../models/results/evento/evento-lista';
 import { EventoService } from '../../services/evento/evento.service'
+import { GoogleMapsService } from '../../services/google-maps/google-maps.service';
+import { Pesquisa } from '../../models/results/google-maps/pesquisa';
 
 @Component({
   selector: 'app-novo-evento',
   templateUrl: './novo-evento.component.html',
   styleUrls: ['./novo-evento.component.css'],
   providers: [
-    EventoService
+    EventoService,
+    GoogleMapsService
   ]
 })
 export class NovoEventoComponent implements OnInit {
@@ -20,7 +23,8 @@ export class NovoEventoComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private eventoService: EventoService) { }
+    private eventoService: EventoService,
+    private googleMapsService: GoogleMapsService) { }
 
   ngOnInit() {
 
@@ -30,7 +34,7 @@ export class NovoEventoComponent implements OnInit {
       id = params['id'];
       
       if (id == undefined) {
-        console.log('entrou2');
+
         this.input = new Incluir();
         return;
       }
@@ -65,7 +69,6 @@ export class NovoEventoComponent implements OnInit {
       });
     }
   }
-
 
   formatDate(date) : string {
     var d = new Date(date),

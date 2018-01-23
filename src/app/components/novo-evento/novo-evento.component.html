@@ -32,7 +32,10 @@
       <option *ngFor="let item of tiposEventos">{{item}}</option>
     </select>
   </div>
-  
+  <div class="form-group">
+    <label>Endereço:</label>
+    <input type="text" class="form-control" required [(ngModel)]="input.endereco" name="endereco" id="endereco">
+  </div>
   <button type="submit" class="btn btn-primary" [disabled]="!heroForm.form.valid">Salvar</button>
   <a routerLink="/agenda" class="btn btn-default">Voltar</a>
 </form>

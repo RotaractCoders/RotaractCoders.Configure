@@ -17,6 +17,8 @@ import { FaqNovoComponent } from './components/faq-novo/faq-novo.component';
 import { ClubeNovoComponent } from './components/clube-novo/clube-novo.component';
 import { SocioNovoComponent } from './components/socio-novo/socio-novo.component';
 
+import { AgmCoreModule } from '@agm/core';
+
 @NgModule({
   declarations: [
     LayoutComponent,
@@ -36,7 +38,10 @@ import { SocioNovoComponent } from './components/socio-novo/socio-novo.component
     BrowserModule,
     HttpModule,
     routing,
-    FormsModule
+    FormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBPBrFEfACP3kpKHNbIptv1YnXk6S4sl8E'
+    })
   ],
   providers: [],
   bootstrap: [LayoutComponent]
