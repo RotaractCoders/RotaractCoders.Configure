@@ -1,14 +1,18 @@
-<nav class="navbar navbar-inverse">
+<nav [hidden]="!mostrarMenu" class="navbar navbar-inverse">
   <div class="container-fluid">
       <div class="navbar-header">
           <a class="navbar-brand" routerLink="/">Rotaract 4430</a>
       </div>
       <ul class="nav navbar-nav">
-          <li class="active"><a routerLink="/agenda">Agenda</a></li>
-          <li class="active"><a routerLink="/faq">FAQ</a></li>
-          <li class="active"><a routerLink="/clube">Clube</a></li>
-          <li class="active"><a routerLink="/socio">Sócio</a></li>
-          <li class="active"><a routerLink="/dados-estaticos">Dados estáticos</a></li>
+          <li><a routerLink="/agenda">Agenda</a></li>
+          <li><a routerLink="/faq">FAQ</a></li>
+          <li><a routerLink="/clube">Clube</a></li>
+          <li><a routerLink="/socio">Sócio</a></li>
+          <li><a routerLink="/arquivo">Arquivo</a></li>
+          <li><a routerLink="/dados-estaticos">Dados estáticos</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a style="cursor:pointer;" (click)="logout()">Logout</a></li>
       </ul>
   </div>
 </nav>

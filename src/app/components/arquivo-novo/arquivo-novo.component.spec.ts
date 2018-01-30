@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TipoEventoComponent } from './tipo-evento.component';
+import { ArquivoNovoComponent } from './arquivo-novo.component';
 
-describe('TipoEventoComponent', () => {
-  let component: TipoEventoComponent;
-  let fixture: ComponentFixture<TipoEventoComponent>;
+describe('ArquivoNovoComponent', () => {
+  let component: ArquivoNovoComponent;
+  let fixture: ComponentFixture<ArquivoNovoComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TipoEventoComponent ]
+      declarations: [ ArquivoNovoComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TipoEventoComponent);
+    fixture = TestBed.createComponent(ArquivoNovoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

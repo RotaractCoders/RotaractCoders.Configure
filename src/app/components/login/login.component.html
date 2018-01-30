@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        {{mensagemErro}}
+        <form (ngSubmit)="login()" #heroForm="ngForm">
+            <div class="form-group">
+                <label>*Login:</label>
+                <input type="text" class="form-control" required [(ngModel)]="input.login" name="login" id="login">
+            </div>
+            <div class="form-group">
+                <label>*Senha:</label>
+                <input type="text" class="form-control" required [(ngModel)]="input.senha" name="senha" id="senha">
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="!heroForm.form.valid">Entrar</button>
+        </form>
+    </div>
+    <div class="col-md-4"></div>
+  </div>

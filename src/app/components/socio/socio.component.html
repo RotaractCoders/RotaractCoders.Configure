@@ -1,3 +1,25 @@
-<p>
-  socio works!
-</p>
+<h2>Sócios</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Clube</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of socios" style="cursor:pointer;">
+      <td routerLink="/socio/editar/{{item.rowKey}}">{{item.nome}}</td>
+      <td routerLink="/socio/editar/{{item.rowKey}}">{{item.clube}}</td>
+      <td routerLink="/socio/editar/{{item.rowKey}}">
+        <ul>
+          <li *ngFor="let cargo of item.cargos">{{cargo.nome}} {{cargo.gestaoDe}}~{{cargo.gestaoAte}}</li>
+        </ul>
+      </td>
+      <td>
+        <span class="glyphicon glyphicon-remove"  style="color:red" (click)="excluir(item)"></span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<button routerLink="/socio/novo" type="button" class="btn btn-default">Novo sócio</button>

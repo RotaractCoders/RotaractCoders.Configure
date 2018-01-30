@@ -1,5 +1,6 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from '../app/guards/index';
 
 import { AgendaComponent } from './components/agenda/agenda.component';
 import { NovoEventoComponent } from './components/novo-evento/novo-evento.component';
@@ -13,24 +14,32 @@ import { ClubeNovoComponent } from './components/clube-novo/clube-novo.component
 import { SocioComponent } from './components/socio/socio.component';
 import { SocioNovoComponent } from './components/socio-novo/socio-novo.component';
 
+import { ArquivoComponent } from './components/arquivo/arquivo.component';
+import { ArquivoNovoComponent } from './components/arquivo-novo/arquivo-novo.component';
+
 import { MainComponent } from './components/main/main.component';
+import { LoginComponent } from './components/login/login.component';
 import { DadosEstaticosComponent } from './components/dados-estaticos/dados-estaticos.component';
 
 const appRoutes: Routes = [
-    { path: '', component: MainComponent },
-    { path: 'agenda', component: AgendaComponent },
-    { path: 'agenda/novo', component: NovoEventoComponent },
-    { path: 'agenda/editar/:id', component: NovoEventoComponent },
-    { path: 'faq', component: FaqComponent },
-    { path: 'faq/novo', component: FaqNovoComponent },
-    { path: 'faq/editar/:id', component: FaqNovoComponent },
-    { path: 'clube', component: ClubeComponent },
-    { path: 'clube/novo', component: ClubeNovoComponent },
-    { path: 'clube/editar/:id', component: ClubeNovoComponent },
-    { path: 'socio', component: SocioComponent },
-    { path: 'socio/novo', component: SocioNovoComponent },
-    { path: 'socio/editar/:id', component: SocioNovoComponent },
-    { path: 'dados-estaticos', component: DadosEstaticosComponent }
+    { path: 'login', component: LoginComponent },
+    { path: '', component: MainComponent, canActivate: [AuthGuard] },
+    { path: 'agenda', component: AgendaComponent, canActivate: [AuthGuard]  },
+    { path: 'agenda/novo', component: NovoEventoComponent, canActivate: [AuthGuard]  },
+    { path: 'agenda/editar/:id', component: NovoEventoComponent, canActivate: [AuthGuard]  },
+    { path: 'faq', component: FaqComponent, canActivate: [AuthGuard]  },
+    { path: 'faq/novo', component: FaqNovoComponent, canActivate: [AuthGuard]  },
+    { path: 'faq/editar/:id', component: FaqNovoComponent, canActivate: [AuthGuard]  },
+    { path: 'clube', component: ClubeComponent, canActivate: [AuthGuard]  },
+    { path: 'clube/novo', component: ClubeNovoComponent, canActivate: [AuthGuard]  },
+    { path: 'clube/editar/:id', component: ClubeNovoComponent, canActivate: [AuthGuard] },
+    { path: 'socio', component: SocioComponent, canActivate: [AuthGuard]  },
+    { path: 'socio/novo', component: SocioNovoComponent, canActivate: [AuthGuard]  },
+    { path: 'socio/editar/:id', component: SocioNovoComponent, canActivate: [AuthGuard]  },
+    { path: 'arquivo', component: ArquivoComponent, canActivate: [AuthGuard]  },
+    { path: 'arquivo/novo', component: ArquivoNovoComponent, canActivate: [AuthGuard]  },
+    { path: 'arquivo/editar/:id', component: ArquivoNovoComponent, canActivate: [AuthGuard]  },
+    { path: 'dados-estaticos', component: DadosEstaticosComponent, canActivate: [AuthGuard]  }
 ];
 
 export const appRoutingProviders: any[] = [];

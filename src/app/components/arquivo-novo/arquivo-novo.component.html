@@ -1,0 +1,20 @@
+
+<form (ngSubmit)="incluir()" #heroForm="ngForm">
+  <div class="form-group">
+    <label>*Nome:</label>
+    <input type="text" class="form-control" required [(ngModel)]="input.nome" name="nome" id="nome">
+  </div>
+  <div class="form-group">
+    <label>*Categoria:</label>
+    <select class="form-control" required [(ngModel)]="input.categoria" name="categoria" id="categoria">
+      <option *ngFor="let item of categorias" [value]="item">{{item}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>*Link:</label>
+    <input type="text" class="form-control" required [(ngModel)]="input.link" name="link" id="link">
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="!heroForm.form.valid">Salvar</button>
+  <a routerLink="/arquivo" class="btn btn-default">Voltar</a>
+</form>
+

@@ -6,7 +6,6 @@ import { FormsModule } from '@angular/forms';
 
 import { AgendaComponent } from './components/agenda/agenda.component';
 import { LayoutComponent } from './components/layout/layout.component';
-import { TipoEventoComponent } from './components/tipo-evento/tipo-evento.component';
 import { NovoEventoComponent } from './components/novo-evento/novo-evento.component';
 import { MainComponent } from './components/main/main.component';
 import { FaqComponent } from './components/faq/faq.component';
@@ -16,14 +15,16 @@ import { DadosEstaticosComponent } from './components/dados-estaticos/dados-esta
 import { FaqNovoComponent } from './components/faq-novo/faq-novo.component';
 import { ClubeNovoComponent } from './components/clube-novo/clube-novo.component';
 import { SocioNovoComponent } from './components/socio-novo/socio-novo.component';
-
+import { ArquivoComponent } from './components/arquivo/arquivo.component';
+import { ArquivoNovoComponent } from './components/arquivo-novo/arquivo-novo.component';
+import { LoginComponent } from './components/login/login.component';
 import { AgmCoreModule } from '@agm/core';
+import { AuthGuard } from '../app/guards/index';
 
 @NgModule({
   declarations: [
     LayoutComponent,
     AgendaComponent,
-    TipoEventoComponent,
     NovoEventoComponent,
     MainComponent,
     FaqComponent,
@@ -32,7 +33,10 @@ import { AgmCoreModule } from '@agm/core';
     DadosEstaticosComponent,
     FaqNovoComponent,
     ClubeNovoComponent,
-    SocioNovoComponent
+    SocioNovoComponent,
+    ArquivoComponent,
+    ArquivoNovoComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +47,9 @@ import { AgmCoreModule } from '@agm/core';
       apiKey: 'AIzaSyBPBrFEfACP3kpKHNbIptv1YnXk6S4sl8E'
     })
   ],
-  providers: [],
+  providers: [
+    AuthGuard
+  ],
   bootstrap: [LayoutComponent]
 })
 export class AppModule { }
