@@ -10,6 +10,7 @@ export class SocioIncluir {
     instagram: string;
     celular: string;
     clube: string;
+    foto: string;
     cargos: CargoSocio[] = [];
 
     constructor(values: Object = {}) {

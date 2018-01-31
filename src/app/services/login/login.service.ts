@@ -3,7 +3,7 @@ import { Http, Response } from '@angular/http';
 import "rxjs/RX";
 import { Usuario } from '../../models/inputs/login/usuario';
 import { Autenticacao } from '../../models/results/login/autenticacao';
-import { retry } from 'rxjs/operators/retry';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class LoginService {
