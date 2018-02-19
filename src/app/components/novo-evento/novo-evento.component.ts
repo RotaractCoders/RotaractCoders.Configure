@@ -71,8 +71,10 @@ export class NovoEventoComponent implements OnInit {
   }
 
   formatDate(date) : string {
-    var d = new Date(date),
-        month = '' + (d.getMonth() + 1),
+    var d = new Date(date);
+    d.setDate(d.getDate() + 1);
+
+        var month = '' + (d.getMonth() + 1),
         day = '' + d.getDate(),
         year = d.getFullYear();
 

@@ -23,7 +23,36 @@ export class SocioNovoComponent implements OnInit {
   cargo: CargoSocio = new CargoSocio();
   tipoCargo: string[] = ['Distrital', 'Clube'];
   nomeCargoClube: string[] = ['Presidente', 'Secretário', 'Tesoureiro'];
-  nomeCargoDistrital: string[] = ['RDR', 'Tesoureiro', 'Secretario'];
+  nomeCargoDistrital: string[] = [
+    'Representante Distrital de Rotaract',
+    'Vice-Representante Distrital de Rotaract',
+    'Tesoureiro Distrital', 
+    'Secretária Distrital',
+    'Representante Distrital Assistente - Área Centro Leste',
+    'Representante Distrital Assistente - Área Leste',
+    'Representante Distrital Assistente - Área Norte',
+    'Representante Distrital Assistente - Área Guarulhos e Região',
+    'Representante Distrital Assistente - Área Alto Tietê',
+    'Diretor Distrital de Protocolo',
+    'Diretor Distrital de Projetos',
+    'Diretor Distrital de Serviços Internos e Companheirismo',
+    'Diretor Distrital de Serviços à Comunidade',
+    'Diretor Distrital de Desenvolvimento Profissional',
+    'Diretor Distrital de Serviços Internacionais',
+    'Diretor Distrital de Integração Interact - Rotaract',
+    'Diretor Distrital de Imagem Pública',
+    'Designer Gráfico Offiline Distrital',
+    'Designer Gráfico Digital Distrital',
+    'Social Media Distrital',
+    'Editor Audiovisual Distrital',
+    'Redatora Distrital',
+    'Programador Distrital',
+    'Conselheiro Distrital',
+    'Chairman Distrital de Rotaract',
+    'Governador do Distrito',
+    'Conjuge Governador do Distrito',
+    'Representante Distrital de Interact'
+  ];
   listaCargos: string[] = [];
 
   constructor(
@@ -101,8 +130,10 @@ export class SocioNovoComponent implements OnInit {
   }
 
   formatDate(date) : string {
-    var d = new Date(date),
-        month = '' + (d.getMonth() + 1),
+    var d = new Date(date);
+    d.setDate(d.getDate() + 1);
+
+        var month = '' + (d.getMonth() + 1),
         day = '' + d.getDate(),
         year = d.getFullYear();
 
@@ -111,4 +142,12 @@ export class SocioNovoComponent implements OnInit {
 
     return [year, month, day].join('-');
   }
+
+  addDays(data, days) {
+    var dat = new Date(data);
+    dat.setDate(dat.getDate() + days);
+    return dat;
+  }
 }
+
+
