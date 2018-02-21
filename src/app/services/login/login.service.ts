@@ -4,15 +4,18 @@ import "rxjs/RX";
 import { Usuario } from '../../models/inputs/login/usuario';
 import { Autenticacao } from '../../models/results/login/autenticacao';
 import 'rxjs/add/operator/map';
+import { Config } from '../../config';
 
 @Injectable()
 export class LoginService {
+
+  config: Config = new Config();
 
   constructor(private http: Http) { }
 
   login(input: Usuario) {
     
-    return this.http.post('http://localhost:60342/api/Login', input)
+    return this.http.post(this.config.apiUrl + 'api/Login', input)
       .map(res => {
         
         let retorno: Autenticacao = res.json();
