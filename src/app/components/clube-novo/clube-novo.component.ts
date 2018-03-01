@@ -13,6 +13,7 @@ import { ClubeService } from '../../services/clube/clube.service';
 })
 export class ClubeNovoComponent implements OnInit {
 
+  programas: string[] = ['Interact', 'Rotaract', 'Rotary'];
   input: ClubeIncluir = new ClubeIncluir();
 
   constructor(

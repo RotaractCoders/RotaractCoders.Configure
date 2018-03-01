@@ -21,8 +21,21 @@ export class SocioNovoComponent implements OnInit {
   input: SocioIncluir = new SocioIncluir();
   clubes: ClubeLista[] = [];
   cargo: CargoSocio = new CargoSocio();
-  tipoCargo: string[] = ['Distrital', 'Clube'];
-  nomeCargoClube: string[] = ['Presidente', 'Secretário', 'Tesoureiro'];
+  tipoCargo: string[] = ['Clube', 'Distrital', 'Rotaract Brasil'];
+  fotoPerfil: any;
+  fotoPerfilAlterada: boolean = false;
+
+  nomeCargoClube: string[] = [
+    'Presidente', 
+    'Secretário', 
+    'Tesoureiro',
+    'Diretor de Protocolo',
+    'Diretor de Serviços Internos e Companheirismo',
+    'Diretor de Desenvolvimento Profissional',
+    'Diretor de Serviços Internacionais',
+    'Diretor de Serviços à Comunidade',
+    'Diretor de Imagem Pública'];
+
   nomeCargoDistrital: string[] = [
     'Representante Distrital de Rotaract',
     'Vice-Representante Distrital de Rotaract',
@@ -53,7 +66,9 @@ export class SocioNovoComponent implements OnInit {
     'Conjuge Governador do Distrito',
     'Representante Distrital de Interact'
   ];
+
   listaCargos: string[] = [];
+  idClube: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -65,10 +80,15 @@ export class SocioNovoComponent implements OnInit {
   ngOnInit() {
 
     let id: string = '';
+    var nomeClube: string = '';
 
     this.route.params.forEach((params: Params) => {
       id = params['id'];
-      
+      nomeClube = params['nomeClube'];
+      this.idClube = params['idClube'];
+
+      console.log(this.idClube);
+
       if (id == undefined) {
 
         this.input = new SocioIncluir();
@@ -82,22 +102,43 @@ export class SocioNovoComponent implements OnInit {
         })
     });
 
-    this.clubeService.listar().subscribe(data => this.clubes = data);
+    this.clubeService.listar().subscribe(data => { 
+        this.clubes = data;
+
+        if (nomeClube != '') {
+          this.input.clube = nomeClube;
+        }
+      });
   }
 
   incluir() {
 
+    if (this.fotoPerfilAlterada) {
+
+      this.socioService.incluirFoto(this.fotoPerfil).subscribe(nomeFoto => {
+        this.input.foto = nomeFoto;
+        this.salvarFoto();
+      });
+
+    } else {
+      this.salvarFoto();
+    }
+  }
+
+  private salvarFoto() {
+    
     if (this.input.rowKey == undefined) {
+      
       this.socioService.incluir(this.input)
-      .subscribe(() => {
-        window.location.href = 'socio';
-      });
-    } 
-    else {
+        .subscribe(() => {
+          window.location.href = 'clube/editar/' + this.idClube;
+        });
+    } else {
+      
       this.socioService.atualizar(this.input)
-      .subscribe(() => {
-        window.location.href = 'socio';
-      });
+        .subscribe(() => {
+          window.location.href = 'clube/editar/' + this.idClube;
+        });
     }
   }
 
@@ -106,6 +147,15 @@ export class SocioNovoComponent implements OnInit {
       this.listaCargos = this.nomeCargoDistrital;
     } else if (this.cargo.tipoCargo == 'Clube') {
       this.listaCargos = this.nomeCargoClube;
+    }
+  }
+
+  uploadFile(event) {
+    let files = event.target.files;
+    if (files.length > 0) {
+      this.socioService.incluirFoto(files[0]).subscribe(nomeFoto => {
+        this.input.foto = nomeFoto;
+      });
     }
   }
 

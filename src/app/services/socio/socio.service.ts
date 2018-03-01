@@ -26,11 +26,20 @@ export class SocioService {
   }
 
   incluir(input: SocioIncluir) {
-    return this.http.post(this.config.apiUrl + 'api/Socio', input, { headers: this.headers });
+    return this.http.post(this.config.apiUrl + 'api/Socio', input, { headers: this.headers })
+      .map(res => res.json());
   }
 
   atualizar(input: SocioIncluir) {
     return this.http.put(this.config.apiUrl + 'api/Socio', input, { headers: this.headers });
+  }
+
+  incluirFoto(foto: any) {
+    let formData: FormData = new FormData();
+    formData.append('files', foto, foto.name);
+
+    return this.http.post(this.config.apiUrl + 'api/Socio/ImportarFoto', formData)
+      .map(res => res.json());
   }
 
   deletar(id: string) {

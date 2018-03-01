@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
+import { RouterModule, Routes, Route, Router }    from '@angular/router';
+
 import { SocioIncluir } from '../../models/inputs/socio/socio-incluir';
 import { SocioLista } from '../../models/results/socio/socio-lista';
 import { SocioService } from '../../services/socio/socio.service';
@@ -13,9 +15,11 @@ import { SocioService } from '../../services/socio/socio.service';
 })
 export class SocioComponent implements OnInit {
 
+  @Input() nomeClube: string;
+  @Input() idClube: string;
   socios: SocioLista[] = [];
 
-  constructor(private socioService: SocioService) { }
+  constructor(private socioService: SocioService, private router: Router) { }
 
   ngOnInit() {
 
@@ -25,8 +29,23 @@ export class SocioComponent implements OnInit {
   carregar() {
 
     this.socioService.listar().subscribe(lista => {
+      
       this.socios = lista;
+
+      if (this.nomeClube != null) {
+        
+       this.socios = this.socios.filter(x => x.clube == this.nomeClube);
+      }
     });
+  }
+
+  novo() {
+
+    this.router.navigate(['/socio/novo', {nomeClube: this.nomeClube, idClube: this.idClube}]);
+  }
+
+  editarSocio(socio: SocioIncluir) {
+    this.router.navigate(['/socio/editar/' + socio.rowKey, {idClube: this.idClube}]);
   }
 
   excluir(socio: SocioIncluir) {

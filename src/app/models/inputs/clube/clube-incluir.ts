@@ -6,6 +6,7 @@ export class ClubeIncluir {
     instagram: string;
     email: string;
     dataFundacao: string;
+    programa: string;
     rotaryPadrinho: string;
     numeroDistrito: string;
 
