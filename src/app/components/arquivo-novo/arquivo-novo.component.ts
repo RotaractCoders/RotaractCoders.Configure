@@ -13,7 +13,7 @@ import { ArquivoService } from '../../services/arquivo/arquivo.service';
 })
 export class ArquivoNovoComponent implements OnInit {
 
-  categorias: string[] = ['Manual', 'Boletim distrital', 'Edital'];
+  categorias: string[] = ['Manuais', 'Menção', 'Regimento'];
   input: ArquivoIncluir = new ArquivoIncluir();
 
   constructor(

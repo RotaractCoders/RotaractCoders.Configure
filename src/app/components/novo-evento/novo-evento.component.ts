@@ -5,6 +5,7 @@ import { EventoLista } from '../../models/results/evento/evento-lista';
 import { EventoService } from '../../services/evento/evento.service'
 import { GoogleMapsService } from '../../services/google-maps/google-maps.service';
 import { Pesquisa } from '../../models/results/google-maps/pesquisa';
+import { GoogleMap } from '@agm/core/services/google-maps-types';
 
 @Component({
   selector: 'app-novo-evento',
@@ -20,6 +21,8 @@ export class NovoEventoComponent implements OnInit {
   input: Incluir = new Incluir();
   programas: string[] = ['Interact', 'Rotaract', 'Rotary'];
   tiposEventos: string[] = ['Reunião', 'Evento', 'Ação', 'Projeto'];
+  enderecoStatus: string = 'Invalido';
+  zoom: number = 10;
 
   constructor(
     private route: ActivatedRoute,
@@ -36,6 +39,10 @@ export class NovoEventoComponent implements OnInit {
       if (id == undefined) {
 
         this.input = new Incluir();
+
+        this.input.latitude = -23.4770317;
+        this.input.longitude = -46.6165583;
+
         return;
       }
 
@@ -46,7 +53,7 @@ export class NovoEventoComponent implements OnInit {
           this.input.data = this.formatDate(this.input.dataEvento);
           this.input.hora = this.formatHour(this.input.dataEvento);
 
-          console.log(this.input);
+          this.pesquisarEndereco(this.input.endereco);
         })
     });
     
@@ -70,9 +77,52 @@ export class NovoEventoComponent implements OnInit {
     }
   }
 
+  pesquisarEndereco(endereco: string) {
+    
+    console.log(endereco);
+    if (endereco == "" || endereco == undefined) {
+      
+      this.enderecoStatus = "Invalido";
+      this.input.latitude = 0;
+      this.input.longitude = 0;
+      this.input.endereco = endereco;
+
+      return;
+    }
+    
+    this.enderecoStatus = "Pesquisando";
+    
+    this.googleMapsService.pesquisar(endereco).subscribe(res => {
+
+      var retorno: Pesquisa = res;
+
+      console.log('ok');
+      console.log(retorno);
+
+      if (retorno.status == 'OK' && retorno.results.length == 1) {
+
+        this.enderecoStatus = "Valido";
+        this.input.latitude = retorno.results[0].geometry.location.lat;
+        this.input.longitude = retorno.results[0].geometry.location.lng;
+        this.input.endereco = endereco;
+
+        this.zoom = 15;
+      }
+      else {
+
+        this.enderecoStatus = "Invalido";
+        this.input.latitude = 0;
+        this.input.longitude = 0;
+        this.input.endereco = endereco;
+      }
+        
+    });
+    
+  }
+
   formatDate(date) : string {
     var d = new Date(date);
-    d.setDate(d.getDate() + 1);
+    d.setDate(d.getDate());
 
         var month = '' + (d.getMonth() + 1),
         day = '' + d.getDate(),

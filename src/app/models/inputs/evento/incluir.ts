@@ -8,6 +8,7 @@ export class Incluir {
     programa:string;
     descricao: string;
     endereco: string;
+    complemento: string;
     latitude: number;
     longitude: number;
     dataEvento: Date;
