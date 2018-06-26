@@ -20,6 +20,8 @@ import { ArquivoNovoComponent } from './components/arquivo-novo/arquivo-novo.com
 import { LoginComponent } from './components/login/login.component';
 import { AgmCoreModule } from '@agm/core';
 import { AuthGuard } from '../app/guards/index';
+import { ProcessoEmAndamentoComponent } from './components/processo-em-andamento/processo-em-andamento.component';
+import { ListaProcessoComponent } from './components/lista-processo/lista-processo.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { AuthGuard } from '../app/guards/index';
     SocioNovoComponent,
     ArquivoComponent,
     ArquivoNovoComponent,
-    LoginComponent
+    LoginComponent,
+    ProcessoEmAndamentoComponent,
+    ListaProcessoComponent
   ],
   imports: [
     BrowserModule,

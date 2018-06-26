@@ -20,6 +20,8 @@ import { ArquivoNovoComponent } from './components/arquivo-novo/arquivo-novo.com
 import { MainComponent } from './components/main/main.component';
 import { LoginComponent } from './components/login/login.component';
 import { DadosEstaticosComponent } from './components/dados-estaticos/dados-estaticos.component';
+import { ProcessoEmAndamentoComponent } from './components/processo-em-andamento/processo-em-andamento.component';
+import { ListaProcessoComponent } from './components/lista-processo/lista-processo.component';
 
 const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -39,7 +41,9 @@ const appRoutes: Routes = [
     { path: 'arquivo', component: ArquivoComponent, canActivate: [AuthGuard]  },
     { path: 'arquivo/novo', component: ArquivoNovoComponent, canActivate: [AuthGuard]  },
     { path: 'arquivo/editar/:id', component: ArquivoNovoComponent, canActivate: [AuthGuard]  },
-    { path: 'dados-estaticos', component: DadosEstaticosComponent, canActivate: [AuthGuard]  }
+    { path: 'dados-estaticos', component: DadosEstaticosComponent, canActivate: [AuthGuard]  },
+    { path: 'processo-em-andamento', component: ProcessoEmAndamentoComponent, canActivate: [AuthGuard]  },
+    { path: 'lista-processos', component: ListaProcessoComponent, canActivate: [AuthGuard]  }
 ];
 
 export const appRoutingProviders: any[] = [];

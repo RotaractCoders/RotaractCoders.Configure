@@ -1,0 +1,40 @@
+<h2>Processamento finalizados</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Distrito</th>
+      <th>Tipo</th>
+      <th>Status</th>
+      <th>Data</th>
+      <th>Quantidade processado</th>
+      <th>Tempo</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let processamento of processos">
+    <tr>
+      <td>{{ processamento.numeroDistrito }}</td>
+      <td>Clube</td>
+      <td>{{ processamento.statusProcessamentoClube }}</td>
+      <td>{{ processamento.inicioProcessamentoClube | date: 'dd/MM/yyyy HH:mm' }}</td>
+      <td>{{ processamento.quantidadeClubes }}</td>
+      <td>{{ processamento.duracaoProcessamentoClube }}</td>
+    </tr>
+    <tr>
+      <td>{{ processamento.numeroDistrito }}</td>
+      <td>Projetos</td>
+      <td>{{ processamento.statusProcessamentoProjeto }}</td>
+      <td>{{ processamento.inicioProcessamentoProjeto | date: 'dd/MM/yyyy HH:mm' }}</td>
+      <td>{{ processamento.quantidadeProjetos }}</td>
+      <td>{{ processamento.duracaoProcessamentoProjeto }}</td>
+    </tr>
+    <tr>
+      <td>{{ processamento.numeroDistrito }}</td>
+      <td>Sócios</td>
+      <td>{{ processamento.statusProcessamentoSocio }}</td>
+      <td>{{ processamento.inicioProcessamentoSocio | date: 'dd/MM/yyyy HH:mm' }}</td>
+      <td>{{ processamento.quantidadeSocios }}</td>
+      <td>{{ processamento.duracaoProcessamentoSocio }}</td>
+    </tr>
+    <br><br>
+  </tbody>
+</table>

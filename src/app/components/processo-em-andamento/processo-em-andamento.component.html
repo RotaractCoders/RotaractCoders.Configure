@@ -1,0 +1,38 @@
+<h2>Processamento em andamento</h2>
+
+<h3 *ngIf="!processo.processo">Nenhum processamento sendo executado</h3>
+
+<table class="table table-striped" *ngIf="processo.processo">
+  <thead>
+    <tr>
+      <th>Distrito</th>
+      <th>Tipo</th>
+      <th>Status</th>
+      <th>Quantidade para processar</th>
+      <th>Quantidade processado</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{ processo.processo.numeroDistrito }}</td>
+      <td>Clube</td>
+      <td>{{ processo.processo.statusProcessamentoClube }}</td>
+      <td>{{ processo.processo.quantidadeClubes }}</td>
+      <td>{{ processo.processo.quantidadeClubes - processo.quantidadeClubeFila }}</td>
+    </tr>
+    <tr>
+      <td>{{ processo.processo.numeroDistrito }}</td>
+      <td>Projetos</td>
+      <td>{{ processo.processo.statusProcessamentoProjeto }}</td>
+      <td>{{ processo.processo.quantidadeProjetos }}</td>
+      <td>{{ processo.processo.quantidadeProjetos - processo.quantidadeProjetosFila }}</td>
+    </tr>
+    <tr>
+      <td>{{ processo.processo.numeroDistrito }}</td>
+      <td>Sócios</td>
+      <td>{{ processo.processo.statusProcessamentoSocio }}</td>
+      <td>{{ processo.processo.quantidadeSocios }}</td>
+      <td>{{ processo.processo.quantidadeSocios - processo.quantidadeSociosFila }}</td>
+    </tr>
+  </tbody>
+</table>
