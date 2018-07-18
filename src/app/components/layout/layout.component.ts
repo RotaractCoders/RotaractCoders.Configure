@@ -27,6 +27,6 @@ export class LayoutComponent implements OnInit {
 
   logout() {
     this.loginService.logout();
-    location.href = '/login';
+    location.href = 'login';
   }
 }

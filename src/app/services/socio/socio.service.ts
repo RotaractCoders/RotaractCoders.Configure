@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers } from '@angular/http';
-import "rxjs/RX";
+import { Http, Headers } from '@angular/http';
 import { SocioIncluir } from '../../models/inputs/socio/socio-incluir';
 import { Config } from '../../config';
 

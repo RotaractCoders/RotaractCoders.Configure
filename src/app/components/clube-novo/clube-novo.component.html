@@ -32,10 +32,6 @@
         <input type="date" class="form-control" [(ngModel)]="input.dataFundacao" name="dataFundacao" id="dataFundacao">
       </div>
       <div class="form-group">
-        <label>Data fechamento:</label>
-        <input type="date" class="form-control" [(ngModel)]="input.dataFechamento" name="dataFechamento" id="dataFechamento">
-      </div>
-      <div class="form-group">
         <label>Programa:</label>
         <select class="form-control" [(ngModel)]="input.programa" name="programa" id="programa">
           <option *ngFor="let item of programas" value="{{item}}">{{item}}</option>

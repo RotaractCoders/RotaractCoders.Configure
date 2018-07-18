@@ -6,11 +6,11 @@
   </div>
   <div class="form-group">
     <label>Realizador:</label>
-    <input type="text" class="form-control" required [(ngModel)]="input.realizador" name="realizador" id="realizador">
+    <input type="text" class="form-control" [(ngModel)]="input.realizador" name="realizador" id="realizador">
   </div>
   <div class="form-group">
     <label>Descrição:</label>
-    <input type="text" class="form-control" [(ngModel)]="input.descricao" name="descricao" id="descricao">
+    <textarea rows="4" class="form-control" [(ngModel)]="input.descricao" name="descricao" id="descricao"></textarea>
   </div>
   <div class="form-group">
     <label>Data evento:</label>
@@ -35,7 +35,7 @@
   <div class="form-group">
     <label>Endereço:</label>
     <div class="input-group">
-      <input type="text" class="form-control" (focusout)="pesquisarEndereco(input.endereco)" required [(ngModel)]="input.endereco" name="endereco" id="endereco">
+      <input type="text" class="form-control" (focusout)="pesquisarEndereco(input.endereco)" [(ngModel)]="input.endereco" name="endereco" id="endereco">
       <span *ngIf="enderecoStatus == 'Invalido'" class="input-group-addon">Invalido</span>
       <span *ngIf="enderecoStatus == 'Pesquisando'" class="input-group-addon">Pesquisando</span>
       <span *ngIf="enderecoStatus == 'Valido'" class="input-group-addon">Valido</span>
@@ -43,13 +43,13 @@
   </div>
   <div class="form-group">
     <label>Complemento:</label>
-    <input type="text" class="form-control" required [(ngModel)]="input.complemento" name="complemento" id="complemento">
+    <input type="text" class="form-control" [(ngModel)]="input.complemento" name="complemento" id="complemento">
   </div>
   <agm-map style="height:400px;" [latitude]="input.latitude" [longitude]="input.longitude" [zoom]="zoom">
     <agm-marker *ngIf="enderecoStatus == 'Valido'" [latitude]="input.latitude" [longitude]="input.longitude"></agm-marker>
   </agm-map>
   <br>
-  <button type="submit" class="btn btn-primary" [disabled]="!heroForm.form.valid || enderecoStatus != 'Valido'">Salvar</button>
+  <button type="submit" class="btn btn-primary" [disabled]="!heroForm.form.valid">Salvar</button>
   <a routerLink="/agenda" class="btn btn-default">Voltar</a>
 </form>
 <br>
