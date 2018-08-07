@@ -4,6 +4,8 @@ import { Usuario } from '../../models/inputs/login/usuario';
 import { Autenticacao } from '../../models/results/login/autenticacao';
 import 'rxjs/add/operator/map';
 import { Config } from '../../config';
+import { Observable } from '../../../../node_modules/rxjs';
+import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class LoginService {
@@ -28,7 +30,14 @@ export class LoginService {
   }
 
   logado() {
-    return localStorage.getItem('autorizacao') != null;
+    return this.http.get(this.config.apiUrl + 'api/Login/Autenticado', { headers: this.config.headers })
+      .map(
+        r => {
+            return true;
+        })
+      .catch((error: any) => {  
+        return Observable.of(false);
+      });
   }
 
   logout() {

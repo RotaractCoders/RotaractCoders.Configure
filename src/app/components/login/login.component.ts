@@ -19,9 +19,13 @@ export class LoginComponent implements OnInit {
   constructor(private loginService:LoginService) {}
 
   ngOnInit() {
-    if (this.loginService.logado()) {
-      location.href = "/";
-    }
+    this.loginService.logado().subscribe(x => {
+      console.log(x);
+      
+      if (x == true) {
+        location.href = "/";  
+      }
+    });
   }
 
   login() {

@@ -22,6 +22,7 @@ import { AgmCoreModule } from '@agm/core';
 import { AuthGuard } from '../app/guards/index';
 import { ProcessoEmAndamentoComponent } from './components/processo-em-andamento/processo-em-andamento.component';
 import { ListaProcessoComponent } from './components/lista-processo/lista-processo.component';
+import { LoginService } from './services/login/login.service';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { ListaProcessoComponent } from './components/lista-processo/lista-proces
     })
   ],
   providers: [
-    AuthGuard
+    AuthGuard,
+    LoginService
   ],
   bootstrap: [LayoutComponent]
 })

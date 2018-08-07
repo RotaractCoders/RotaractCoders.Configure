@@ -9,7 +9,7 @@ export class ArquivoService {
   headers = new Headers();
   config: Config = new Config();
 
-  constructor(private http: Http) { 
+  constructor(private http: Http) {
     this.headers.append('Authorization', 'bearer ' + JSON.parse(localStorage.getItem('autorizacao')).accessToken);
     this.headers.append('Content-Type', 'application/json');
   }
