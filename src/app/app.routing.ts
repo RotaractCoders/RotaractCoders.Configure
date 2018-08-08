@@ -41,7 +41,6 @@ const appRoutes: Routes = [
     { path: 'arquivo', component: ArquivoComponent, canActivate: [AuthGuard]  },
     { path: 'arquivo/novo', component: ArquivoNovoComponent, canActivate: [AuthGuard]  },
     { path: 'arquivo/editar/:id', component: ArquivoNovoComponent, canActivate: [AuthGuard]  },
-    { path: 'dados-estaticos', component: DadosEstaticosComponent, canActivate: [AuthGuard]  },
     { path: 'processo-em-andamento', component: ProcessoEmAndamentoComponent, canActivate: [AuthGuard]  },
     { path: 'lista-processos', component: ListaProcessoComponent, canActivate: [AuthGuard]  }
 ];
